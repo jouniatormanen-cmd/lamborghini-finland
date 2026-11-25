@@ -81,7 +81,7 @@
   document.querySelectorAll('.product').forEach((card,i)=>{
     const actions=document.createElement('div');actions.className='shop-actions';
     const btn=document.createElement('button');btn.type='button';btn.className='add-cart';btn.textContent='Lisää ostoskoriin';
-    btn.addEventListener('click',()=>{cart[products[i].id]=(cart[products[i].id]||0)+1;render();open.innerHTML='OSTOSKORI <span class="cart-count">'+Object.values(cart).reduce((a,b)=>a+b,0)+'</span>';});
+    btn.addEventListener('click',()=>{cart[products[i].id]=(cart[products[i].id]||0)+1;render();});
     actions.appendChild(btn);card.appendChild(actions);
   });
   lines.addEventListener('click',e=>{
