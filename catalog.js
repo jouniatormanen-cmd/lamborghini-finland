@@ -16,7 +16,7 @@ grid.innerHTML=catalog.map(p=>{
  const status=p.soldOut;
  return '<article class="product" data-category="'+p.collection+'" data-product-id="'+p.id+'" data-sold-out="'+(status?'true':'false')+'">'+
    '<a class="product-photo" href="'+(p.productUrl||'#yhteys')+'" aria-label="Tutustu '+p.name+' -malliin">'+(img?'<img src="'+img+'" alt="Tonino Lamborghini '+p.name+'">':'<div class="catalog-placeholder"><span>TONINO<br>LAMBORGHINI</span><small>TIMEPIECES</small></div>')+'</a>'+
-   '<div class="type">'+collectionName[p.collection]+'</div><h3>'+p.name+'</h3>'+
+   '<h3>'+p.name+'</h3>'+
    '<div class="price">'+euro(p.price)+'</div>'+
    '<p class="product-summary">'+shortText(p)+'</p>'+
    '<details class="product-details"><summary>Tekniset tiedot</summary><div class="product-details-body">'+
@@ -27,7 +27,7 @@ grid.innerHTML=catalog.map(p=>{
    (p.water?'<p><strong>Vesitiiviys:</strong> '+p.water+'</p>':'')+
    (p.strap?'<p><strong>Ranneke:</strong> '+p.strap+'</p>':'')+
    '</div></details>'+
-   (status?'<span class="product-link">Loppuunmyyty – kysy saatavuutta</span>':'<span class="product-link">Lisää ostoskoriin alla</span>')+
+   ''+
    '</article>';
 }).join('');
 const filters=document.querySelector('.filters');filters.innerHTML='<button class="filter active" data-filter="all">Kaikki 68</button><button class="filter" data-filter="spyder">Spyder 39</button><button class="filter" data-filter="novemillimetri">Novemillimetri 8</button><button class="filter" data-filter="cuscinetto">Cuscinetto 11</button><button class="filter" data-filter="shock">Shock ABS 10</button>';
