@@ -1,7 +1,7 @@
 (()=>{
   const euro=n=>new Intl.NumberFormat('fi-FI',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
   const products=[...document.querySelectorAll('.product')].map((card,i)=>({
-    id:card.querySelector('.sku')?.textContent.trim()||String(i),
+    id:card.dataset.productId||String(i),
     name:card.querySelector('h3')?.textContent.trim()||'Kello',
     price:Number((card.querySelector('.price')?.textContent||'').replace(/[^0-9,]/g,'').replace(',','.'))||0,
     image:card.querySelector('img')?.src||'',
@@ -79,6 +79,7 @@
   backdrop.addEventListener('click',e=>{if(e.target===backdrop)hide()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
   document.querySelectorAll('.product').forEach((card,i)=>{
+    if(card.dataset.soldOut==='true')return;
     const actions=document.createElement('div');actions.className='shop-actions';
     const btn=document.createElement('button');btn.type='button';btn.className='add-cart';btn.textContent='Lisää ostoskoriin';
     btn.addEventListener('click',()=>{cart[products[i].id]=(cart[products[i].id]||0)+1;render();});
