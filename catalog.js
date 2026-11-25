@@ -5,9 +5,28 @@ const euro=n=>new Intl.NumberFormat('fi-FI',{style:'currency',currency:'EUR',max
 const images={};
 grid.querySelectorAll('.product').forEach(card=>{const name=card.querySelector('h3')?.textContent.trim();const src=card.querySelector('img')?.src;if(name&&src)images[name]=src;});
 const collectionName={spyder:'Spyder',novemillimetri:'Novemillimetri',cuscinetto:'Cuscinetto',shock:'Shock ABS'};
-grid.innerHTML=catalog.map(p=>{const img=p.image||images[p.name];const status=p.soldOut;return '<article class="product" data-category="'+p.collection+'" data-product-id="'+p.id+'" data-sold-out="'+(status?'true':'false')+'"><div class="product-photo">'+(img?'<img src="'+img+'" alt="Tonino Lamborghini '+p.name+'">':'<div class="catalog-placeholder"><span>TONINO<br>LAMBORGHINI</span><small>TIMEPIECES</small></div>')+'</div><div class="type">'+collectionName[p.collection]+'</div><h3>'+p.name+'</h3><div class="sku">'+(p.sku||("Malliston tuote "+p.id.slice(-2)))+'</div><div class="price">'+euro(p.price)+'</div><p>'+(status?'Valmistajan verkkokaupassa merkitty loppuunmyydyksi. Kysy mahdollisesta saatavuudesta.':'Valmistajan verkkokaupan listahinta 25.11.2026. Saatavuus vahvistetaan ennen tilausta.')+'</p><div class="specs"><span>'+(p.movement||"Tekniset tiedot tarkistetaan")+"</span><span>"+(p.water||"")+"</span><span>"+(p.dimensions||"")+"</span></div>"+(p.strap?'<p class="product-detail">'+p.strap+'</p>':"")+(p.case?'<p class="product-detail">'+p.case+'</p>':"")+(status?'<span class="product-link">Kysy saatavuutta</span>':'<span class="product-link">Lisää ostoskoriin alla</span>')+'</article>';}).join('');
+grid.innerHTML=catalog.map(p=>{
+ const img=p.image||images[p.name];
+ const status=p.soldOut;
+ const shortMovement=(p.movement||"").split(",")[0];
+ const shortDimensions=(p.dimensions||"").split(";")[0];
+ return '<article class="product" data-category="'+p.collection+'" data-product-id="'+p.id+'" data-sold-out="'+(status?'true':'false')+'">'+
+   '<div class="product-photo">'+(img?'<img src="'+img+'" alt="Tonino Lamborghini '+p.name+'">':'<div class="catalog-placeholder"><span>TONINO<br>LAMBORGHINI</span><small>TIMEPIECES</small></div>')+'</div>'+
+   '<div class="type">'+collectionName[p.collection]+'</div><h3>'+p.name+'</h3><div class="sku">'+(p.sku||("Malliston tuote "+p.id.slice(-2)))+'</div><div class="price">'+euro(p.price)+'</div>'+
+   '<p class="product-summary">'+(status?'Tällä hetkellä loppuunmyyty. Kysy saatavuudesta.':'Kysy saatavuus ja toimitusaika ennen tilausta.')+'</p>'+
+   '<div class="specs">'+(shortDimensions?'<span>'+shortDimensions+'</span>':'')+(p.water?'<span>'+p.water+'</span>':'')+(shortMovement?'<span>'+shortMovement+'</span>':'')+'</div>'+
+   '<details class="product-details"><summary>Tekniset tiedot</summary><div class="product-details-body">'+
+   (p.movement?'<p><strong>Koneisto:</strong> '+p.movement+'</p>':'')+
+   (p.case?'<p><strong>Kuori ja lasi:</strong> '+p.case+'</p>':'')+
+   (p.dimensions?'<p><strong>Mitat:</strong> '+p.dimensions+'</p>':'')+
+   (p.water?'<p><strong>Vesitiiviys:</strong> '+p.water+'</p>':'')+
+   (p.strap?'<p><strong>Ranneke:</strong> '+p.strap+'</p>':'')+
+   '</div></details>'+
+   (status?'<span class="product-link">Kysy saatavuutta</span>':'<span class="product-link">Valitse tämä kello</span>')+
+   '</article>';
+}).join('');
 const filters=document.querySelector('.filters');filters.innerHTML='<button class="filter active" data-filter="all">Kaikki 68</button><button class="filter" data-filter="spyder">Spyder 39</button><button class="filter" data-filter="novemillimetri">Novemillimetri 8</button><button class="filter" data-filter="cuscinetto">Cuscinetto 11</button><button class="filter" data-filter="shock">Shock ABS 10</button>';
 document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.filter;document.querySelectorAll('.product').forEach(c=>c.hidden=f!=='all'&&c.dataset.category!==f);}));
-const style=document.createElement('style');style.textContent='.catalog-placeholder{display:grid;place-items:center;text-align:center;color:#d9c28f;font-family:Georgia,serif;font-size:20px;letter-spacing:3px;line-height:1.2}.catalog-placeholder small{font:9px Arial,sans-serif;letter-spacing:5px;margin-top:12px;color:#a78b58}.product-photo img{width:86%;height:86%;object-fit:contain}.product[hidden]{display:none!important}';document.head.appendChild(style);
+const style=document.createElement('style');style.textContent='.catalog-placeholder{display:grid;place-items:center;text-align:center;color:#d9c28f;font-family:Georgia,serif;font-size:20px;letter-spacing:3px;line-height:1.2}.catalog-placeholder small{font:9px Arial,sans-serif;letter-spacing:5px;margin-top:12px;color:#a78b58}.product-photo img{width:86%;height:86%;object-fit:contain}.product[hidden]{display:none!important}.product-summary{min-height:0!important;margin:7px 0 10px!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.product .specs{margin-bottom:10px}.product .specs span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.product-details{border-top:1px solid #30291e;padding-top:9px;margin:0 0 10px;color:#bdb5a6;font-size:11px}.product-details summary{color:var(--gold2);cursor:pointer;letter-spacing:.5px}.product-details-body{padding-top:7px;line-height:1.6}.product-details-body p{min-height:0!important;margin:6px 0!important;font-size:11px!important}.product-link{margin-top:auto!important}.product{height:100%}';document.head.appendChild(style);
 window.TL_CATALOG=catalog;
 })();
