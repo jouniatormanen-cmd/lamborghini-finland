@@ -11,7 +11,7 @@
   let cart={};
   const style=document.createElement('style');
   style.textContent=`
-    .shop-actions{display:flex;gap:8px;margin-top:12px}
+    .shop-actions{display:flex;gap:8px;margin-top:auto;align-items:stretch}
     .add-cart{flex:1;background:var(--gold);color:#111;border:0;padding:12px 9px;font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:700;cursor:pointer}
     .add-cart:hover{background:var(--gold2)}
     .cart-open{border:1px solid var(--gold);background:transparent;color:var(--gold2);padding:10px 14px;font-size:10px;letter-spacing:1px;cursor:pointer;white-space:nowrap}
@@ -79,11 +79,18 @@
   backdrop.addEventListener('click',e=>{if(e.target===backdrop)hide()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
   document.querySelectorAll('.product').forEach((card,i)=>{
-    if(card.dataset.soldOut==='true')return;
     const actions=document.createElement('div');actions.className='shop-actions';
-    const btn=document.createElement('button');btn.type='button';btn.className='add-cart';btn.textContent='Lisää ostoskoriin';
-    btn.addEventListener('click',()=>{cart[products[i].id]=(cart[products[i].id]||0)+1;render();});
-    actions.appendChild(btn);card.appendChild(actions);
+    if(card.dataset.soldOut==='true'){
+      const unavailable=document.createElement('span');
+      unavailable.className='shop-unavailable';
+      unavailable.textContent='Ei juuri nyt saatavilla';
+      actions.appendChild(unavailable);
+    }else{
+      const btn=document.createElement('button');btn.type='button';btn.className='add-cart';btn.textContent='Lisää ostoskoriin';
+      btn.addEventListener('click',()=>{cart[products[i].id]=(cart[products[i].id]||0)+1;render();});
+      actions.appendChild(btn);
+    }
+    card.appendChild(actions);
   });
   lines.addEventListener('click',e=>{
     const change=e.target.closest('[data-change]'),remove=e.target.closest('[data-remove]');
