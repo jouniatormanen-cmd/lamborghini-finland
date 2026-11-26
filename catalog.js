@@ -44,7 +44,7 @@ collectionShowcase.innerHTML='<div class="collection-showcase-head"><span>FOUR D
  const image=product?product.image:'';
  return '<button class="collection-tile" type="button" data-collection-filter="'+item.id+'">'+
  (image?'<span class="collection-tile-image"><img src="'+image+'" alt=""></span>':'<span class="collection-tile-image collection-tile-empty">TL</span>')+
- '<span class="collection-tile-copy"><strong>'+(item.id===\'novemillimetri\'?\'Novemilli<br>metri\':item.name)+\'</strong><small>'+item.desc+\'</small><em>Katso mallisto →</em></span></button>';
+ '<span class="collection-tile-copy"><strong>'+(item.id==='novemillimetri'?'Novemilli<br>metri':item.name)+'</strong><small>'+item.desc+'</small><em>Katso mallisto →</em></span></button>';
 }).join('')+'</div>';
 filters.insertAdjacentElement('afterend',collectionShowcase);
 
