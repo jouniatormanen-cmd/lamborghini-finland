@@ -48,8 +48,12 @@ collectionShowcase.innerHTML='<div class="collection-showcase-head"><span>FOUR D
 filters.insertAdjacentElement('afterend',collectionShowcase);
 collectionShowcase.querySelectorAll('[data-collection-filter]').forEach(tile=>tile.addEventListener('click',()=>{
  const selected=tile.dataset.collectionFilter;
- document.querySelectorAll('.filter').forEach(button=>{button.classList.toggle('active',button.dataset.filter===selected);});
- document.querySelectorAll('.product').forEach(card=>card.hidden=card.dataset.category!==selected);
+ const matchingFilter=document.querySelector('.filter[data-filter="'+selected+'"]');
+ if(matchingFilter) matchingFilter.click();
+ else {
+   document.querySelectorAll('.filter').forEach(button=>button.classList.toggle('active',button.dataset.filter===selected));
+   document.querySelectorAll('.product').forEach(card=>{card.hidden=card.dataset.category!==selected;});
+ }
  grid.scrollIntoView({behavior:'smooth',block:'start'});
 }));
 
