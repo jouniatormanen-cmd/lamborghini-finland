@@ -75,15 +75,15 @@ style.textContent=`
 .collection-showcase-head h3{font-size:27px;margin:7px 0 3px;color:var(--white)}
 .collection-showcase-head p{font-size:11px;color:var(--muted);margin:0}
 .collection-showcase-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-.collection-tile{min-width:0;display:flex;align-items:center;gap:10px;text-align:left;padding:10px;background:#111;border:1px solid #393126;color:var(--white);cursor:pointer}
+.collection-tile{min-width:0;width:100%;display:flex;align-items:center;gap:10px;text-align:left;padding:10px;background:#111;border:1px solid #393126;color:var(--white);cursor:pointer;overflow:hidden}
 .collection-tile:hover,.collection-tile:focus-visible{border-color:var(--gold);outline:none}
 .collection-tile-image{width:66px;height:66px;flex:0 0 66px;display:grid;place-items:center;background:radial-gradient(circle,#393126,#111);overflow:hidden}
 .collection-tile-image img{width:100%;height:100%;object-fit:contain}
 .collection-tile-empty{color:var(--gold);font-family:Georgia,serif;font-size:22px}
-.collection-tile-copy{display:flex;min-width:0;flex-direction:column;gap:4px}
-.collection-tile-copy strong{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600}
-.collection-tile-copy small{font-size:9px;color:var(--muted)}
-.collection-tile-copy em{font-size:9px;color:var(--gold2);font-style:normal;letter-spacing:.5px}
+.collection-tile-copy{display:flex;flex:1 1 0;min-width:0;max-width:100%;flex-direction:column;gap:4px;overflow:hidden}
+.collection-tile-copy strong{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;min-width:0;max-width:100%;overflow-wrap:anywhere;line-height:1.05}
+.collection-tile-copy small{font-size:9px;color:var(--muted);min-width:0;max-width:100%;overflow-wrap:anywhere;line-height:1.25}
+.collection-tile-copy em{font-size:9px;color:var(--gold2);font-style:normal;letter-spacing:.5px;min-width:0;max-width:100%;overflow-wrap:anywhere;line-height:1.25}
 .products{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:16px!important;align-items:stretch!important}
 .product{height:100%!important;min-height:0!important;display:flex!important;flex-direction:column!important;padding:12px!important;min-width:0!important}
 .product-photo{height:155px!important;min-height:155px!important;flex:0 0 155px!important;margin:0 0 8px!important}
@@ -101,7 +101,9 @@ style.textContent=`
 @media(max-width:560px){
  .collection-showcase{padding:13px;margin-bottom:20px}
  .collection-showcase-head h3{font-size:23px}
- .collection-tile{padding:7px;gap:7px}
+ .collection-tile{padding:7px;gap:7px;align-items:center}
+ .collection-tile-copy strong{font-size:15px}
+ .collection-tile-copy small,.collection-tile-copy em{font-size:8px}
  .collection-tile-image{width:48px;height:48px;flex-basis:48px}
  .collection-tile-copy strong{font-size:16px}
  .product{padding:9px!important}
