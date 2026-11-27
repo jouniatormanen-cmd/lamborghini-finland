@@ -48,6 +48,13 @@ collectionShowcase.innerHTML='<div class="collection-showcase-head"><span>FOUR D
 }).join('')+'</div>';
 filters.insertAdjacentElement('afterend',collectionShowcase);
 
+/* Clear visual transition from featured collections to the full catalogue. */
+const catalogueIntro=document.createElement('div');
+catalogueIntro.className='catalogue-intro';
+catalogueIntro.innerHTML='<div class="catalogue-intro-rule"></div><span class="catalogue-eyebrow">KOKO MALLISTO</span><h3>Löydä oma kellosi.</h3><p>Neljästä mallistosta löydät yhteensä 68 erilaista kelloa. Rajaa valikoimaa malliston mukaan tai selaa kaikkia malleja.</p>';
+collectionShowcase.insertAdjacentElement('afterend',catalogueIntro);
+catalogueIntro.appendChild(filters);
+filters.hidden=false;
 
 filters.innerHTML='<button class="filter active" data-filter="all">Kaikki 68</button><button class="filter" data-filter="spyder">Spyder 39</button><button class="filter" data-filter="novemillimetri">Novemillimetri 8</button><button class="filter" data-filter="cuscinetto">Cuscinetto 11</button><button class="filter" data-filter="shock">Shock ABS 10</button>';
 const applyCollectionFilter=filter=>{
@@ -72,6 +79,15 @@ const style=document.createElement('style');
 style.textContent=`
 .product[hidden]{display:none!important}
 .collection-showcase{margin:0 0 30px;padding:22px;border:1px solid #30291e;background:linear-gradient(135deg,#17130d,#0d0d0d)}
+.catalogue-intro{margin:36px 0 22px;padding:26px 18px 18px;text-align:center;border-top:1px solid #30291e;background:linear-gradient(180deg,#111 0%,#090909 100%)}
+.catalogue-intro-rule{width:42px;height:2px;margin:0 auto 17px;background:var(--gold)}
+.catalogue-eyebrow{font-size:9px;letter-spacing:3px;color:var(--gold2)}
+.catalogue-intro h3{font-size:34px;line-height:1.05;margin:8px 0;color:var(--white)}
+.catalogue-intro p{max-width:520px;margin:0 auto 18px;color:var(--muted);font-size:12px;line-height:1.7}
+.catalogue-intro .filters{display:flex!important;justify-content:center;flex-wrap:wrap;gap:8px;margin:0!important}
+.catalogue-intro .filter{padding:9px 13px;border-color:#403728;background:#111;font-size:9px}
+.catalogue-intro .filter.active{background:#302516;border-color:var(--gold);color:var(--gold2)}
+@media(max-width:560px){.catalogue-intro{margin:27px 0 16px;padding:22px 4px 14px}.catalogue-intro h3{font-size:29px}.catalogue-intro p{font-size:11px;padding:0 10px}.catalogue-intro .filters{gap:6px}.catalogue-intro .filter{padding:8px 9px;font-size:8px}}
 .collection-showcase-head{text-align:center;margin:0 0 18px}
 .collection-showcase-head>span{font-size:9px;letter-spacing:3px;color:var(--gold)}
 .collection-showcase-head h3{font-size:27px;margin:7px 0 3px;color:var(--white)}
