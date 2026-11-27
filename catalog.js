@@ -105,8 +105,8 @@ style.textContent=`
 .collection-tile-copy em{font-size:9px;color:var(--gold2);font-style:normal;letter-spacing:.5px;min-width:0;max-width:100%;white-space:normal;word-break:normal;overflow-wrap:normal;line-height:1.3}
 .products{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:16px!important;align-items:stretch!important}
 .product{height:100%!important;min-height:0!important;display:flex!important;flex-direction:column!important;padding:12px!important;min-width:0!important}
-.product-photo{height:155px!important;min-height:155px!important;flex:0 0 155px!important;margin:0 0 8px!important}
-.product-photo img{width:88%!important;height:88%!important;object-fit:contain!important}
+.product-photo{height:175px!important;min-height:175px!important;flex:0 0 175px!important;margin:0 0 8px!important}
+.product-photo img{width:94%!important;height:94%!important;object-fit:contain!important}
 .product h3{height:42px!important;min-height:42px!important;max-height:42px!important;margin:5px 0 3px!important;font-size:20px!important;line-height:1.08!important;overflow:hidden!important}
 .product .price{height:29px!important;min-height:29px!important;margin:0 0 3px!important;font-size:24px!important}
 .product-summary{height:32px!important;min-height:32px!important;max-height:32px!important;margin:0 0 5px!important;font-size:11px!important;line-height:1.4!important;overflow:hidden!important}
@@ -126,7 +126,7 @@ style.textContent=`
  .collection-tile-image{width:100%;height:112px;min-height:112px}
  .collection-tile-copy strong{font-size:15px}
  .product{padding:9px!important}
- .product-photo{height:130px!important;min-height:130px!important;flex-basis:130px!important}
+ .product-photo{height:155px!important;min-height:155px!important;flex-basis:155px!important}
  .product h3{height:40px!important;min-height:40px!important;max-height:40px!important;font-size:17px!important}
  .product .price{height:27px!important;min-height:27px!important;font-size:22px!important}
  .product-summary{height:30px!important;min-height:30px!important;max-height:30px!important;font-size:10px!important}
