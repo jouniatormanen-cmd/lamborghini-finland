@@ -14,8 +14,8 @@
     .shop-actions{display:flex;gap:8px;margin: auto 0 0!important;align-items:stretch;width:100%;min-height:36px;box-sizing:border-box}
     .add-cart{flex:1;min-width:0;height:36px;box-sizing:border-box;background:var(--gold);color:#111;border:0;padding:12px 9px;font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:700;cursor:pointer}
     .add-cart:hover{background:var(--gold2)}
-    .cart-open{border:1px solid var(--gold);background:transparent;color:var(--gold2);padding:10px 14px;font-size:10px;letter-spacing:1px;cursor:pointer;white-space:nowrap}
-    .cart-count{display:inline-grid;place-items:center;background:var(--gold);color:#111;border-radius:50%;width:19px;height:19px;margin-left:5px;font-weight:700}
+    .cart-open{border:1px solid var(--gold);background:transparent;color:var(--gold2);padding:7px 10px;font-size:9px;letter-spacing:1px;cursor:pointer;white-space:nowrap}
+    .cart-count{display:inline-grid;place-items:center;background:var(--gold);color:#111;border-radius:50%;width:16px;height:16px;margin-left:4px;font-size:9px;font-weight:700}
     .shop-backdrop{position:fixed;inset:0;background:#000b;z-index:30;display:none}
     .shop-backdrop.open{display:block}
     .shop-panel{position:absolute;right:0;top:0;height:100%;width:min(560px,100%);overflow:auto;background:#111;border-left:1px solid var(--line);padding:24px;color:var(--white)}
