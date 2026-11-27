@@ -80,8 +80,8 @@ style.textContent=`
 .collection-showcase-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .collection-tile{min-width:0;width:100%;display:flex;align-items:center;gap:10px;text-align:left;padding:10px;background:#111;border:1px solid #393126;color:var(--white);cursor:pointer;overflow:hidden}
 .collection-tile:hover,.collection-tile:focus-visible{border-color:var(--gold);outline:none}
-.collection-tile-image{width:84px;height:84px;flex:0 0 84px;display:grid;place-items:center;background:radial-gradient(circle,#393126,#111);overflow:hidden;padding:5px;box-sizing:border-box}
-.collection-tile-image img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;padding:3px;box-sizing:border-box}
+.collection-tile-image{width:96px;height:136px;flex:0 0 96px;display:grid;place-items:center;background:radial-gradient(circle,#393126,#111);overflow:visible;padding:5px;box-sizing:border-box}
+.collection-tile-image img{display:block;width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important;padding:0!important;margin:0 auto!important;box-sizing:border-box}
 .collection-tile-empty{color:var(--gold);font-family:Georgia,serif;font-size:22px}
 .collection-tile-copy{display:flex;flex:1 1 0;min-width:0;max-width:100%;flex-direction:column;gap:4px;overflow:hidden}
 .collection-tile-copy strong{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;min-width:0;max-width:100%;overflow-wrap:anywhere;line-height:1.05}
@@ -107,7 +107,7 @@ style.textContent=`
  .collection-tile{padding:7px;gap:7px;align-items:center}
  .collection-tile-copy strong{font-size:15px}
  .collection-tile-copy small,.collection-tile-copy em{font-size:8px}
- .collection-tile-image{width:68px;height:68px;flex-basis:68px}
+ .collection-tile-image{width:78px;height:116px;flex-basis:78px}
  .collection-tile-copy strong{font-size:16px}
  .product{padding:9px!important}
  .product-photo{height:130px!important;min-height:130px!important;flex-basis:130px!important}
