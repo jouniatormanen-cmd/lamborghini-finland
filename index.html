@@ -39,7 +39,7 @@
       <a class="cta" href="#mallisto">Tutustu mallistoon</a>
     </div></div>
     <section id="mallisto">
-      <div class="section-head"><div class="eyebrow">The collection</div><h2>Valikoima</h2><p>Tutustu mallistoon. Avaa tekniset tiedot vain niistä malleista, joista haluat lisätietoja.</p></div>
+      <div class="section-head"><div class="eyebrow">The collection</div><h2>Valikoima</h2></div>
       <div class="filters" role="group" aria-label="Rajaa mallistoa">
         <button class="filter active" data-filter="all">Kaikki</button><button class="filter" data-filter="spyder">Spyder</button><button class="filter" data-filter="novemillimetri">Novemillimetri</button><button class="filter" data-filter="cuscinetto">Cuscinetto</button><button class="filter" data-filter="shock">Shock ABS</button>
       </div>
@@ -75,7 +75,7 @@
     document.querySelectorAll('.links a').forEach(link=>link.addEventListener('click',()=>document.querySelector('.links').classList.remove('open')));
     document.querySelectorAll('.product-link[data-product]').forEach(link=>link.addEventListener('click',()=>{document.querySelector('input[name="subject"]').value="Tuotekysely: "+link.dataset.product;}));
   </script>
-  <script src="./catalog.js?v=20261127-2" defer></script>
+  <script src="./catalog.js?v=20261127-3" defer></script>
   <script src="./shop.js?v=20261126-8" defer></script>
 </body>
 </html>
