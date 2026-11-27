@@ -34,7 +34,7 @@ grid.innerHTML=catalog.map(p=>{
 const filters=document.querySelector('.filters');
 const collectionShowcase=document.createElement('div');
 collectionShowcase.className='collection-showcase';
-collectionShowcase.innerHTML='<div class="collection-showcase-head"><span>FOUR DISTINCT COLLECTIONS</span><h3>Neljä mallistoa. Neljä omaa tyyliä.</h3><p>Valitse mallisto ja tutustu sen kelloihin.</p></div><div class="collection-showcase-grid">'+[
+collectionShowcase.innerHTML='<div class="collection-showcase-head"><span>FOUR DISTINCT COLLECTIONS</span><h3>Neljä mallistoa. Neljä omaa tyyliä.</h3><p>Valitse mallisto ja tutustu sen kelloihin.</p><button class="collection-all" type="button">Näytä kaikki 68 kelloa</button></div><div class="collection-showcase-grid">'+[
  {id:'spyder',name:'Spyder',desc:'Urheilullinen ja näyttävä'},
  {id:'novemillimetri',name:'Novemillimetri',desc:'Ohut ja viimeistelty'},
  {id:'cuscinetto',name:'Cuscinetto',desc:'Omaleimaista muotoilua'},
@@ -55,6 +55,8 @@ const applyCollectionFilter=filter=>{
  document.querySelectorAll('.product').forEach(card=>{card.hidden=filter!=='all'&&card.dataset.category!==filter;});
 };
 document.addEventListener('click',event=>{
+ const showAll=event.target.closest('.collection-all');
+ if(showAll&&collectionShowcase.contains(showAll)){applyCollectionFilter('all');grid.scrollIntoView({behavior:'smooth',block:'start'});return;}
  const filterButton=event.target.closest('.filter[data-filter]');
  if(filterButton&&filters.contains(filterButton)){
   applyCollectionFilter(filterButton.dataset.filter);
@@ -74,6 +76,7 @@ style.textContent=`
 .collection-showcase-head>span{font-size:9px;letter-spacing:3px;color:var(--gold)}
 .collection-showcase-head h3{font-size:27px;margin:7px 0 3px;color:var(--white)}
 .collection-showcase-head p{font-size:11px;color:var(--muted);margin:0}
+.collection-all{margin-top:10px;padding:7px 13px;border:1px solid #8f7544;background:transparent;color:var(--gold2);font-size:10px;letter-spacing:.5px;cursor:pointer}.collection-all:hover,.collection-all:focus-visible{background:#292116;outline:none}
 .collection-showcase-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .collection-tile{min-width:0;width:100%;display:flex;align-items:center;gap:10px;text-align:left;padding:10px;background:#111;border:1px solid #393126;color:var(--white);cursor:pointer;overflow:hidden}
 .collection-tile:hover,.collection-tile:focus-visible{border-color:var(--gold);outline:none}
